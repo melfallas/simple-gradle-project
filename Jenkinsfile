@@ -4,7 +4,7 @@ def ENV = 'dev'
 def IMAGE_NAME = "${CONTAINER_NAME}"
 def DOCKER_PORT = '9090'
 def HOST_PORT = '5000'
-def LINUX_USER = 'admin1'
+def LINUX_USER = 'ubuntu'
 
 def SOURCEDIR = "/home/${LINUX_USER}/jenkins/jenkins_home/workspace/${JOB_NAME}"
 
