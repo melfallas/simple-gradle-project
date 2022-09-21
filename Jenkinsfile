@@ -1,4 +1,3 @@
-def SOURCEDIR = '/home/$LINUX_USER/jenkins/jenkins_home/workspace/${JOB_NAME}'
 
 def CONTAINER_NAME = 'basic-app'
 def ENV = 'default'
@@ -7,22 +6,11 @@ def DOCKER_PORT = '9090'
 def HOST_PORT = '5000'
 def LINUX_USER = 'admin1'
 
+def SOURCEDIR = '/home/$LINUX_USER/jenkins/jenkins_home/workspace/${JOB_NAME}'
+
 pipeline {
 
     agent any
-
-    environment {
-  		//SOURCEDIR = '/home/ubuntu/jenkins/jenkins_home/workspace'
-		//NAME = 'APP2'
-		//ENV = 'ist'
-		TEST='test'
-		//TEST1='test'
-		/*
-		withCredentials([string(credentialsId: 'DGTOKEN', variable: 'DOMAIN_API_TOKEN')]) {
-			DGTOKEN = ${DOMAIN_API_TOKEN}
-		}
-		*/
-    }
 
     stages {
         stage('Build') {
