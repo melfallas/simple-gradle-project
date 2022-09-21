@@ -6,9 +6,10 @@ SOURCE_DIR=/build/libs
 TARGET_DIR=jenkins/build_stage/
 export IMAGE_NAME=$1
 
-echo "********************************"
-echo "*** Building jar with gradle ***"
-echo "********************************"
+echo ""
+echo "************************************"
+echo "*** Procesing generated jar file ***"
+echo "************************************"
 if [ -z ${APP_DIR} ]; then 
 	echo "|"
 	echo "Not specified directory"
@@ -29,14 +30,10 @@ else
 	echo "|"
 	echo "Getting *.jar files of ${APP_DIR}${SOURCE_DIR} directory ..."
 	ls -l ${APP_DIR}${SOURCE_DIR}
-	#echo "Borrando adicionales de directorio ${APP_DIR}${SOURCE_DIR}..."
-	#rm -f silo-0.0.1-SNAPSHOT.jar.original
-	#ls -l ${APP_DIR}${SOURCE_DIR}
-	# Copiar el jar	
+	# Copy JAR file	
 	echo "|"
 	rm -f "$APP_DIR"${SOURCE_DIR}/*plain.jar
 	echo "Copy *.jar files to jenkins/build_stage/ directory ..."
-	#cp -f "$APP_DIR"${SOURCE_DIR}/silo-0.0.1-SNAPSHOT.jar ${TARGET_DIR}
 	cp -f "$APP_DIR"${SOURCE_DIR}/*.jar ${TARGET_DIR}
 	echo ""
 	echo "##############################"

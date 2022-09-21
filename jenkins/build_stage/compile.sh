@@ -8,9 +8,9 @@ mvnComand4=$4
 mvnComand5=$5
 appDir=$6
 
-echo "--------------------------------------------------------------------------------------"
-echo "                            Procesing Build Stage ...                                 "
-echo "--------------------------------------------------------------------------------------"
+echo "-----------------------------------------------------------------------------------------------------------------"
+echo "                                            Procesing Build Stage ...                                            "
+echo "-----------------------------------------------------------------------------------------------------------------"
 
 if [ -z ${appDir} ]; then 
 	echo ""
@@ -21,11 +21,10 @@ else
 	echo "********************************"
 	echo "*** Building jar with gradle ***"
 	echo "********************************"
-	echo "|"
+	echo ""
 	echo "Current Directory: $PWD"
 	echo "|"
-	echo "|"
 	echo "Docker Volume Directory: $appDir"
-	echo "|"
+	echo ""
 	docker run --rm -u gradle -v $appDir:/app -w /app gradle:6.9-jdk8 /usr/bin/gradle wrapper build -x test
 fi

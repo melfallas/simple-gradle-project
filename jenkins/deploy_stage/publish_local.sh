@@ -12,7 +12,7 @@ export JOB_NAME=$(sed -n '8p' /tmp/.auth)
 export CONTAINER_NAME=$APP_NAME-$ENV
 export DEPLOY_DIR="/var/jenkins_home/workspace/$JOB_NAME/jenkins/deploy_stage"
 
-# Default constanst
+# Default constansts
 PROJECT_NAME=$APP_NAME-$ENV
 
 #export IMAGE=$(sed -n '1p' /var/jenkins_home/jenkins_deploy/.appvar)
@@ -33,8 +33,5 @@ echo ""
 echo Current Directory: $PWD
 echo Deploy Directory: $DEPLOY_DIR
 echo ""
-#cd ../jenkins_deploy && docker-compose up -d
-#cd ~/jenkins/jenkins_deploy && docker-compose up -d
-#cd ~/jenkins_deploy && docker-compose up -d
 cd $DEPLOY_DIR && docker-compose -f docker-compose-deploy.yml -p $PROJECT_NAME up -d
-#cd /home/admin1/jenkins/jenkins_deploy && docker-compose up -d
+
