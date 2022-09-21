@@ -18,8 +18,8 @@ pipeline {
                 sh """
 					chmod +x jenkins/build_stage/compile.sh
 					chmod +x jenkins/build_stage/build.sh
-					./jenkins/build_stage/compile.sh mvn -B -DskipTests clean package ${SOURCEDIR}
-					./jenkins/build_stage/build.sh $IMAGE_NAME ${SOURCEDIR}
+					./jenkins/build_stage/compile.sh $SOURCEDIR
+					./jenkins/build_stage/build.sh $IMAGE_NAME $SOURCEDIR
 				"""
 				
             }
@@ -30,12 +30,11 @@ pipeline {
 					
 				"""
 				//chmod +x jenkins/test_stage/test.sh
-				//sh './jenkins/test_stage/test.sh mvn test ${SOURCEDIR}'
+				//sh './jenkins/test_stage/test.sh mvn test $SOURCEDIR'
             }
         }
         stage('Deploy') {
             steps {
-				//sh 'echo Procesing Push...'
 				sh """
 					chmod +x jenkins/deploy_stage/deploy_local.sh
 					chmod +x jenkins/deploy_stage/publish_local.sh
