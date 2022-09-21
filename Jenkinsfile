@@ -16,9 +16,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh """
-					--------------------------------------
+					echo --------------------------------------
 					echo Procesing Build Stage ...
-					--------------------------------------
+					echo --------------------------------------
 					chmod +x jenkins/build_stage/compile.sh
 					chmod +x jenkins/build_stage/build.sh
 					./jenkins/build_stage/compile.sh mvn -B -DskipTests clean package ${SOURCEDIR}
@@ -30,9 +30,9 @@ pipeline {
         stage('Test') {
             steps {
 				sh """
-					--------------------------------------
-					  Procesing Test Stage ...
-					--------------------------------------
+					echo --------------------------------------
+					echo   Procesing Test Stage ...
+					echo --------------------------------------
 				"""
 				//chmod +x jenkins/test_stage/test.sh
 				//sh './jenkins/test_stage/test.sh mvn test ${SOURCEDIR}'
