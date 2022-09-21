@@ -1,25 +1,23 @@
 #!/bin/bash
 
-# Validación de parámetros
-mvnComand1=$1
-mvnComand2=$2
-appDir=$3
+# Parameter Validation
+APP_DIR=$1
 
-# if [ -d appDir ]
-# then
-   # echo "El directorio ${appDir} existe"
-# else
-   # echo "El directorio ${appDir} no es válido"
-# fi
-if [ -z ${appDir} ]; then 
+echo ""
+echo "-------------------------------------------------------------------------------------------------------------------"
+echo "                                              Procesing Testing Stage ...                                          "
+echo "-------------------------------------------------------------------------------------------------------------------"
+
+
+if [ -z ${APP_DIR} ]; then 
 	echo ""
-	echo Debe especificar el directorio java
+	echo Application directory no specified
 	echo ""
 else
 	echo ""
-	echo "################"
-	echo "*** Testing  ***"
-	echo "################"
+	echo "#######################"
+	echo "***  Testing Phase  ***"
+	echo "#######################"
 	echo ""
-	docker run --rm -v /root/.m2:/root/.m2 -v $appDir:/app -w /app maven:3-alpine "$mvnComand1" "$mvnComand2"
+	docker run --rm -u gradle -v $APP_DIR:/app -w /app gradle:6.9-jdk8 /usr/bin/gradle wrapper test
 fi
