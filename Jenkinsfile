@@ -30,9 +30,7 @@ pipeline {
         stage('Test') {
             steps {
 				sh """
-					echo --------------------------------------
-					echo   Procesing Test Stage ...
-					echo --------------------------------------
+					
 				"""
 				//chmod +x jenkins/test_stage/test.sh
 				//sh './jenkins/test_stage/test.sh mvn test ${SOURCEDIR}'
