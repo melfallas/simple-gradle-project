@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    image: "$IMAGE_NAME:$BUILD_NUMBER"
+    build:
+      context: .
+      dockerfile: Dockerfile-Java
+

@@ -23,8 +23,8 @@ pipeline {
 				//sh 'echo Procesing Build...'
 				
                 sh """
-					./jenkins/build/mvn.sh mvn -B -DskipTests clean package ${SOURCEDIR}
-					./jenkins/build/build.sh ${SOURCEDIR}
+					./jenkins/build_stage/mvn.sh mvn -B -DskipTests clean package ${SOURCEDIR}
+					./jenkins/build_stage/build.sh ${SOURCEDIR}
 				"""
 				
             }
@@ -32,27 +32,27 @@ pipeline {
         stage('Test') {
             steps {
 				sh 'echo Procesing Test...'
-				//sh './jenkins/test/test.sh mvn test ${SOURCEDIR}'
+				//sh './jenkins/test_stage/test.sh mvn test ${SOURCEDIR}'
             }
         }
         stage('Push') {
             steps {
 				sh 'echo Procesing Push...'
-				//sh './jenkins/push/push.sh app app localhost:5000'
+				//sh './jenkins/push_stage/push.sh app app localhost:5000'
             }
         }
         stage('Deploy') {
             steps {
 				//sh 'echo Procesing Push...'
 				sh '''
-				./jenkins/deploy/deploy_local.sh $CONTAINER_NAME $ENV $IMAGE_NAME $HOST_PORT $DOCKER_PORT $LINUX_USER $JOB_NAME
-				./jenkins/deploy/publish_local.sh
+				./jenkins/deploy_stage/deploy_local.sh $CONTAINER_NAME $ENV $IMAGE_NAME $HOST_PORT $DOCKER_PORT $LINUX_USER $JOB_NAME
+				./jenkins/deploy_stage/publish_local.sh
 				'''
 				/*
 				withCredentials([string(credentialsId: 'DGTOKEN', variable: 'DOMAIN_API_TOKEN')]) {
 					sh '''
-					./jenkins/deploy/deploy_local.sh $CONTAINER_NAME $ENV $IMAGE_NAME $HOST_PORT $DOCKER_PORT $LINUX_USER ${JOB_NAME}
-					./jenkins/deploy/publish_local.sh
+					./jenkins/deploy_stage/deploy_local.sh $CONTAINER_NAME $ENV $IMAGE_NAME $HOST_PORT $DOCKER_PORT $LINUX_USER ${JOB_NAME}
+					./jenkins/deploy_stage/publish_local.sh
 					'''
 				}
 				*/
