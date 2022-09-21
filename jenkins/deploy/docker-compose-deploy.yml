@@ -1,0 +1,9 @@
+version: '3'
+services:
+  sprinboot-microservice:
+    container_name: $CONTAINER_NAME
+    image: $IMAGE:$TAG
+    ports:
+      - "$AUTOMATIC_PORT:$DOCKER_PORT"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=$ENV"
