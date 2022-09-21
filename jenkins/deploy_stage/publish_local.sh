@@ -29,10 +29,10 @@ echo Setting JOB_NAME value: $JOB_NAME
 
 export AUTOMATIC_PORT=$(($HOST_PORT + $TAG))
 echo Setting automatic port: $AUTOMATIC_PORT
-
+echo ""
 echo Current Directory: $PWD
 echo Deploy Directory: $DEPLOY_DIR
-
+echo ""
 #cd ../jenkins_deploy && docker-compose up -d
 #cd ~/jenkins/jenkins_deploy && docker-compose up -d
 #cd ~/jenkins_deploy && docker-compose up -d
