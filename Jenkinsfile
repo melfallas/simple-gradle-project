@@ -15,11 +15,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-				//sh 'echo Procesing Build...'
-				
                 sh """
 					--------------------------------------
-					  Procesing Build Stage ...
+					echo Procesing Build Stage ...
 					--------------------------------------
 					chmod +x jenkins/build_stage/compile.sh
 					chmod +x jenkins/build_stage/build.sh
