@@ -23,8 +23,8 @@ pipeline {
 				//sh 'echo Procesing Build...'
 				
                 sh """
-					chmod +x mvn.sh
-					chmod +x build.sh
+					chmod +x jenkins/build_stage/mvn.sh
+					chmod +x jenkins/build_stage/build.sh
 					./jenkins/build_stage/mvn.sh mvn -B -DskipTests clean package ${SOURCEDIR}
 					./jenkins/build_stage/build.sh ${SOURCEDIR}
 				"""
