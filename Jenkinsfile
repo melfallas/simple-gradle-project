@@ -34,14 +34,14 @@ pipeline {
         stage('Test') {
             steps {
 				sh 'echo Procesing Test...'
-				chmod +x jenkins/test_stage/test.sh
+				//chmod +x jenkins/test_stage/test.sh
 				//sh './jenkins/test_stage/test.sh mvn test ${SOURCEDIR}'
             }
         }
         stage('Push') {
             steps {
 				sh 'echo Procesing Push...'
-				chmod +x jenkins/push_stage/push.sh
+				//chmod +x jenkins/push_stage/push.sh
 				//sh './jenkins/push_stage/push.sh app app localhost:5000'
             }
         }
