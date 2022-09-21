@@ -16,9 +16,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh """
-					echo --------------------------------------
-					echo Procesing Build Stage ...
-					echo --------------------------------------
 					chmod +x jenkins/build_stage/compile.sh
 					chmod +x jenkins/build_stage/build.sh
 					./jenkins/build_stage/compile.sh mvn -B -DskipTests clean package ${SOURCEDIR}
@@ -40,9 +37,6 @@ pipeline {
             steps {
 				//sh 'echo Procesing Push...'
 				sh """
-					--------------------------------------
-							Procesing Deploy Stage ...
-					--------------------------------------
 					chmod +x jenkins/deploy_stage/deploy_local.sh
 					chmod +x jenkins/deploy_stage/publish_local.sh
 					./jenkins/deploy_stage/deploy_local.sh $CONTAINER_NAME $ENV $IMAGE_NAME $HOST_PORT $DOCKER_PORT $LINUX_USER $JOB_NAME
