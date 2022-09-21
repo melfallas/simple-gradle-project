@@ -10,7 +10,7 @@ export LINUX_USER=$(sed -n '7p' /tmp/.auth)
 export JOB_NAME=$(sed -n '8p' /tmp/.auth)
 
 export CONTAINER_NAME=$APP_NAME-$ENV
-export DEPLOY_DIR="/var/jenkins_home/workspace/$JOB_NAME/jenkins/deploy"
+export DEPLOY_DIR="/var/jenkins_home/workspace/$JOB_NAME/jenkins/deploy_stage"
 
 # Default constanst
 PROJECT_NAME=$APP_NAME-$ENV
