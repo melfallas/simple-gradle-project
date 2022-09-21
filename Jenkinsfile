@@ -30,8 +30,6 @@ pipeline {
 					chmod +x jenkins/test_stage/test.sh
 					./jenkins/test_stage/test.sh $SOURCEDIR
 				"""
-				//chmod +x jenkins/test_stage/test.sh
-				//sh './jenkins/test_stage/test.sh mvn test $SOURCEDIR'
             }
         }
         stage('Deploy') {
