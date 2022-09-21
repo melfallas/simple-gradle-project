@@ -36,7 +36,8 @@ else
 	#ls -l ${APP_DIR}${SOURCE_DIR}
 	# Copiar el jar	
 	echo "|"
-	echo "Copy *.jar files to jenkins/build directory ..."
+	rm -f "$APP_DIR"${SOURCE_DIR}/*plain.jar
+	echo "Copy *.jar files to jenkins/build_stage/ directory ..."
 	#cp -f "$APP_DIR"${SOURCE_DIR}/silo-0.0.1-SNAPSHOT.jar ${TARGET_DIR}
 	cp -f "$APP_DIR"${SOURCE_DIR}/*.jar ${TARGET_DIR}
 	echo ""
