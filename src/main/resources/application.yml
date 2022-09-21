@@ -1,0 +1,10 @@
+
+server:
+  port : ${PORT:9090}
+
+#management:
+#   security:
+#      enabled: false
+#   endpoint:
+#      health:
+#        show-details: always
