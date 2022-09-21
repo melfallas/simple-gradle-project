@@ -1,6 +1,6 @@
 
 def CONTAINER_NAME = 'basic-app'
-def ENV = 'default'
+def ENV = 'dev'
 def IMAGE_NAME = "${CONTAINER_NAME}"
 def DOCKER_PORT = '9090'
 def HOST_PORT = '5000'
@@ -18,6 +18,9 @@ pipeline {
 				//sh 'echo Procesing Build...'
 				
                 sh """
+					echo --------------------------------------------------------------------------------------
+					echo                             Procesing Build Stage ...
+					echo --------------------------------------------------------------------------------------
 					chmod +x jenkins/build_stage/mvn.sh
 					chmod +x jenkins/build_stage/build.sh
 					./jenkins/build_stage/mvn.sh mvn -B -DskipTests clean package ${SOURCEDIR}
@@ -28,16 +31,13 @@ pipeline {
         }                        
         stage('Test') {
             steps {
-				sh 'echo Procesing Test...'
+				sh """
+					echo --------------------------------------------------------------------------------------
+					echo                             Procesing Build Stage ...
+					echo --------------------------------------------------------------------------------------
+				"""
 				//chmod +x jenkins/test_stage/test.sh
 				//sh './jenkins/test_stage/test.sh mvn test ${SOURCEDIR}'
-            }
-        }
-        stage('Push') {
-            steps {
-				sh 'echo Procesing Push...'
-				//chmod +x jenkins/push_stage/push.sh
-				//sh './jenkins/push_stage/push.sh app app localhost:5000'
             }
         }
         stage('Deploy') {
@@ -49,14 +49,6 @@ pipeline {
 				./jenkins/deploy_stage/deploy_local.sh $CONTAINER_NAME $ENV $IMAGE_NAME $HOST_PORT $DOCKER_PORT $LINUX_USER $JOB_NAME
 				./jenkins/deploy_stage/publish_local.sh
 				"""
-				/*
-				withCredentials([string(credentialsId: 'DGTOKEN', variable: 'DOMAIN_API_TOKEN')]) {
-					sh """
-					./jenkins/deploy_stage/deploy_local.sh $CONTAINER_NAME $ENV $IMAGE_NAME $HOST_PORT $DOCKER_PORT $LINUX_USER ${JOB_NAME}
-					./jenkins/deploy_stage/publish_local.sh
-					"""
-				}
-				*/
             }
         }
     }
