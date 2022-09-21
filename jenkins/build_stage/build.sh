@@ -43,7 +43,7 @@ else
 	echo "*** Building docker image ***"
 	echo "##############################"
 	echo ""
-	echo "Imagen name: $IMAGE_NAME"
+	echo "Image name: $IMAGE_NAME"
 	echo ""
 	cd ${TARGET_DIR} && docker-compose -f docker-compose-build.yml build --no-cache
 	echo "|"

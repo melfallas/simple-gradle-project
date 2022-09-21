@@ -21,7 +21,7 @@ pipeline {
 					chmod +x jenkins/build_stage/mvn.sh
 					chmod +x jenkins/build_stage/build.sh
 					./jenkins/build_stage/mvn.sh mvn -B -DskipTests clean package ${SOURCEDIR}
-					./jenkins/build_stage/build.sh ${SOURCEDIR}
+					./jenkins/build_stage/build.sh $IMAGE_NAME ${SOURCEDIR}
 				"""
 				
             }
